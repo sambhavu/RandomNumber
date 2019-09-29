@@ -1,0 +1,10 @@
+double Random :: random_number(){
+    
+    double u1,u2,normalrandom; 
+    u1 = ( (double)(rand()) + 1.0 )/( (double)(RAND_MAX) + 1.0);
+    u2 = ( (double)(rand()) + 1.0 )/( (double)(RAND_MAX) + 1.0);
+    normalrandom = cos(8*atan(1.0)*u2)*sqrt(-2*log(u1));
+    
+    return normalrandom;
+    
+}
