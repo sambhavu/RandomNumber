@@ -1,0 +1,51 @@
+double option:: normdist(double x)
+{
+    double num = 0;
+    double w1 = 0;
+    double w2 = 0;
+    
+    w1 = (1/sqrt(2*Pi));
+    w2 = exp(-.5*x*x);
+    
+    num = w1*w2; 
+    
+    return num;
+}
+
+    
+double option:: cnd(double x)
+{
+  double L, K, w ;
+  /* constants */
+  double const a1 = 0.31938153, a2 = -0.356563782, a3 = 1.781477937;
+  double const a4 = -1.821255978, a5 = 1.330274429;
+
+  L = fabs(x);
+  K = 1.0 / (1.0 + 0.2316419 * L);
+  w = 1.0 - 1.0 / sqrt(2 * Pi) * exp(-L *L / 2) * (a1 * K + a2 * K *K + a3 * pow(K,3) + a4 * pow(K,4) + a5 * pow(K,5));
+
+  if (x < 0 ){
+    w= 1.0 - w;
+  }
+  return w;
+}
+
+void option::random_normal(){
+    
+ double u1,u2, v1, v2;
+ double S = 2;
+ while(S>=1){
+     
+ u1 = double(rand())/double(RAND_MAX);
+ u2 = double(rand())/double(RAND_MAX);
+ 
+ v1 = 2.0*u1-1.0;
+ v2 = 2.0*u2-1.0;
+ 
+ S = pow(v1,2)+pow(v2,2);
+};
+
+double x1 = v1*sqrt((-2.0*log(S))/S);
+return x1; 
+};
+
